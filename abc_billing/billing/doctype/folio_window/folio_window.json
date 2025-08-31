@@ -1,0 +1,74 @@
+{
+ "actions": [],
+ "autoname": "autoincrement",
+ "creation": "2025-08-27 15:45:30.259338",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "window_code",
+  "window_label",
+  "total_charges",
+  "total_payments",
+  "balance",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "description": "Short identifier like A, B, C...",
+   "fieldname": "window_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Window Code",
+   "reqd": 1
+  },
+  {
+   "description": "Friendly name such as 'Room Charges' or 'Extras'",
+   "fieldname": "window_label",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Window Label"
+  },
+  {
+   "fieldname": "total_charges",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Charges",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_payments",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Payments",
+   "read_only": 1
+  },
+  {
+   "fieldname": "balance",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Balance",
+   "read_only": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-08-27 22:21:49.357175",
+ "modified_by": "Administrator",
+ "module": "Billing",
+ "name": "Folio Window",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
