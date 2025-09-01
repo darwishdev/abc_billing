@@ -15,8 +15,9 @@ CREATE PROCEDURE reservation_create_folio(IN reservation_name VARCHAR(255))
 BEGIN
     DECLARE v_owner VARCHAR(255);
     DECLARE v_customer VARCHAR(255);
-    DECLARE v_check_in_date DATE;  -- Changed from INT to DATE
-    DECLARE v_check_out_date DATE; -- Changed from INT to DATE
+    DECLARE v_check_in_date DATE;
+    DECLARE v_check_out_date DATE;
+    DECLARE v_folio_id VARCHAR(255);
 
     -- Get reservation details
     SELECT
@@ -34,7 +35,10 @@ BEGIN
     WHERE
         name = reservation_name;
 
-    -- Insert into tabFolio
+    -- Create folio id
+    SET v_folio_id = CONCAT('f-', reservation_name);
+
+    -- Insert Folio
     INSERT INTO `tabFolio` (
         name,
         linked_reservation,
@@ -47,7 +51,7 @@ BEGIN
         total_payments,
         balance
     ) VALUES (
-        CONCAT('f-', reservation_name),
+        v_folio_id,
         reservation_name,
         v_customer,
         'Open',
@@ -58,6 +62,31 @@ BEGIN
         0,
         0
     );
+
+    -- Insert default window "A"
+    INSERT INTO `tabFolio Window` (
+        name,
+        parent,
+        parenttype,
+        parentfield,
+        window_code,
+        window_label,
+        total_charges,
+        total_payments,
+        balance
+    ) VALUES (
+        CONCAT('fw-', v_folio_id),
+        v_folio_id,
+        'Folio',
+        'folio_windows',
+        '1',
+        'w-1',
+        0,
+        0,
+        0
+    );
+
+    -- Update reservation
     UPDATE `tabHotel Reservation`
     SET check_in_completed = TRUE
     WHERE name = reservation_name;

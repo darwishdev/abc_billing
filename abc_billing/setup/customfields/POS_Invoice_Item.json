@@ -4,9 +4,12 @@
     "label": "Folio Window",
     "fieldtype": "Link",
     "options": "Folio Window",
-    "in_list_view": 1,
-    "in_standard_filter": 1,
     "reqd": 0,
     "read_only_onload": 0
+  },
+  {
+    "fieldname": "for_date",
+    "label": "For Date",
+    "fieldtype": "Int"
   }
 ]

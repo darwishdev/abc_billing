@@ -1,6 +1,7 @@
 import json
 import frappe
 from frappe.utils import now
+
 @frappe.whitelist(allow_guest=False, methods=["POST"])
 def folio_window_upsert(folio_id: str, window_code: str, window_label: str = None, remarks: str = None):
    """
